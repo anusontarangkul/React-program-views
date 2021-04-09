@@ -1,10 +1,10 @@
-
+import BarChart from "./components/BarChart"
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Test</h1>
+      <BarChart />
     </div>
   );
 }
