@@ -1,8 +1,8 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-const BarChart = ({ data, label, dataY }) => {
-    console.log(label)
+const BarChart = ({ label, dataY }) => {
+
     return (
         <div>
             <Bar
@@ -41,8 +41,14 @@ const BarChart = ({ data, label, dataY }) => {
                                 beginAtZero: true
                             }
                         }]
+                    },
+                    title: {
+                        display: true,
+                        text: 'Total Number of Views from Pittsburgh or Cleveland',
+                        fontSize: 36
                     }
                 }}
+
 
             />
         </div>
