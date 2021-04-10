@@ -12,22 +12,29 @@ import datacsv from './data.csv';
 function App() {
   const [data, setData] = useState()
   const [label, setLabel] = useState([])
-  // const [genre, setGenre] = useState()
+  const [dataY, setDataY] = useState([])
+
 
   useEffect(() => {
     csv(datacsv).then(data => {
       setData(data);
       const graphData = data.filter(data => data.Viewer_Hometown === "Pittsburgh" || data.Viewer_Hometown === "Cleveland")
 
-      const labelsGenre = new Set();
-      data.forEach(d => {
-        labelsGenre.add(d.Program_Genre)
+      const labelsGenre = new Map();
+      graphData.forEach(d => {
+        labelsGenre[d.Program_Genre] = 0;
       })
-      setLabel(Array.from(labelsGenre))
-      data.forEach(d => {
+
+      setLabel(Object.keys(labelsGenre))
+      graphData.forEach(d => {
         d.Number_of_Viewers = +d.Number_of_Viewers
+        labelsGenre[d.Program_Genre] += d.Number_of_Viewers
 
       })
+      setDataY(Object.values(labelsGenre))
+      console.log(Object.values(labelsGenre))
+
+
     });
   }, []);
 
@@ -35,7 +42,7 @@ function App() {
 
   return (
     <div className="App">
-      <BarChart data={data} label={label} />
+      <BarChart data={data} label={label} dataY={dataY} />
 
     </div>
   );
