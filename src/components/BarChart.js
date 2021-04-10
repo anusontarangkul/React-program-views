@@ -1,12 +1,13 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
-const BarChart = () => {
+const BarChart = ({ data, label }) => {
+    console.log(label)
     return (
         <div>
             <Bar
                 data={{
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: label,
                     datasets: [{
                         label: '# of Votes',
                         data: [12, 19, 3, 5, 2, 3],
