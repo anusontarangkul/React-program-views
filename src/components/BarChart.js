@@ -4,7 +4,7 @@ import { Bar } from 'react-chartjs-2';
 const BarChart = ({ label, dataY }) => {
 
     return (
-        <div>
+        <div title="chart ">
             <Bar
 
                 data={{
